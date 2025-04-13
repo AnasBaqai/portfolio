@@ -77,6 +77,10 @@ const StyledHeader = styled(Motion.header)`
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
 
+  .container {
+    padding-left: 1rem;
+  }
+
   .header-content {
     display: flex;
     justify-content: space-between;
@@ -87,6 +91,7 @@ const StyledHeader = styled(Motion.header)`
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-left: 1.5rem;
   }
 
   .avatar {
@@ -114,6 +119,7 @@ const StyledHeader = styled(Motion.header)`
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin-right: 2rem;
   }
 
   nav a {
@@ -140,6 +146,10 @@ const StyledHeader = styled(Motion.header)`
   }
 
   @media (max-width: 768px) {
+    .logo-container {
+      margin-left: 0;
+    }
+
     .header-content {
       flex-direction: column;
       gap: 1rem;
@@ -147,6 +157,7 @@ const StyledHeader = styled(Motion.header)`
 
     nav ul {
       gap: 1rem;
+      margin-right: 0;
     }
   }
 `;
