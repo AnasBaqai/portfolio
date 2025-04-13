@@ -27,6 +27,15 @@ import {
   FaSearch,
   FaFilter,
   FaShippingFast,
+  FaFileAlt,
+  FaRobot,
+  FaCode,
+  FaCloud,
+  FaBook,
+  FaFileUpload,
+  FaTerminal,
+  FaLink,
+  FaAws,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -41,6 +50,7 @@ import {
   SiRedux,
   SiStripe,
   SiCss3,
+  SiPython,
 } from "react-icons/si";
 
 const projects = [
@@ -184,6 +194,72 @@ const projects = [
     ],
     systemIcon: <FaStore style={{ fontSize: "38px" }} />,
   },
+  {
+    id: "3",
+    title: "Intelligent Document RAG System",
+    description:
+      "A Retrieval-Augmented Generation (RAG) system that allows you to query PDF documents using natural language.",
+    fullDescription: `
+      The Intelligent Document RAG System is designed to enhance document search and question-answering capabilities using advanced AI techniques. It combines the power of Large Language Models with efficient document retrieval to provide accurate answers based on the content of your PDF documents.
+      
+      The system uses LangChain for orchestration, ChromaDB for vector storage, and supports multiple embedding providers including Ollama for local use and AWS Bedrock for cloud-based implementations. Users can query documents in natural language and receive contextually relevant responses extracted from the documents.
+    `,
+    image: "/rag_system.png",
+    github: "https://github.com/AnasBaqai/Intelligent_Document_RAG_System",
+    live: null,
+    technologies: [
+      { name: "Python", icon: <SiPython /> },
+      { name: "LangChain", icon: <FaLink /> },
+      { name: "AWS Bedrock", icon: <FaAws /> },
+      { name: "ChromaDB", icon: <FaDatabase /> },
+      { name: "Ollama", icon: <FaRobot /> },
+    ],
+    features: [
+      {
+        text: "PDF Document Ingestion: Process and chunk PDF documents for analysis",
+        icon: <FaFileAlt />,
+      },
+      {
+        text: "Vector Storage: Store and retrieve document embeddings using ChromaDB",
+        icon: <FaDatabase />,
+      },
+      {
+        text: "Semantic Search: Find relevant document sections based on meaning",
+        icon: <FaSearch />,
+      },
+      {
+        text: "Natural Language Querying: Ask questions in plain language",
+        icon: <FaRobot />,
+      },
+      {
+        text: "Multi-provider Support: Use Ollama locally or AWS Bedrock in the cloud",
+        icon: <FaCloud />,
+      },
+      {
+        text: "Automated Testing: Framework for validating response quality",
+        icon: <FaCode />,
+      },
+    ],
+    architecture: [
+      {
+        text: "Document Processing: PDF parsing and chunking for effective storage",
+        icon: <FaFileUpload />,
+      },
+      {
+        text: "Vector Database: ChromaDB for efficient similarity search",
+        icon: <FaDatabase />,
+      },
+      {
+        text: "Embedding Generation: Multiple models for text vectorization",
+        icon: <FaBook />,
+      },
+      {
+        text: "Query Engine: LangChain for orchestrating the RAG pipeline",
+        icon: <FaTerminal />,
+      },
+    ],
+    systemIcon: <FaRobot style={{ fontSize: "38px" }} />,
+  },
   // Other projects can be added here with similar structure
 ];
 
@@ -225,14 +301,16 @@ const ProjectDetails = () => {
               >
                 <FaGithub /> View Code
               </a>
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-              >
-                <FaExternalLinkAlt /> Live Demo
-              </a>
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <FaExternalLinkAlt /> Live Demo
+                </a>
+              )}
             </div>
           </div>
 
@@ -263,9 +341,8 @@ const ProjectDetails = () => {
               <h2>Technologies Used</h2>
               <div className="tech-stack">
                 {project.technologies.map((tech, index) => (
-                  <div key={index} className="tech-item">
+                  <div key={index} className="tech-item" title={tech.name}>
                     <div className="tech-icon">{tech.icon}</div>
-                    <span>{tech.name}</span>
                   </div>
                 ))}
               </div>
@@ -459,19 +536,19 @@ const StyledProjectDetails = styled.section`
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 1.5rem;
+    justify-content: center;
   }
 
   .tech-item {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1.2rem;
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    min-width: 110px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
     transition: var(--transition);
 
     &:hover {
@@ -482,7 +559,7 @@ const StyledProjectDetails = styled.section`
   }
 
   .tech-icon {
-    font-size: 2.2rem;
+    font-size: 3rem;
     color: var(--primary);
   }
 
@@ -575,12 +652,16 @@ const StyledProjectDetails = styled.section`
     }
 
     .tech-stack {
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .tech-item {
-      min-width: 90px;
-      padding: 1rem;
+      width: 70px;
+      height: 70px;
+    }
+
+    .tech-icon {
+      font-size: 2.5rem;
     }
 
     .features-list,

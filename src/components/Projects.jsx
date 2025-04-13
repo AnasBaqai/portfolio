@@ -16,6 +16,16 @@ import {
   FaStore,
   FaCreditCard,
   FaTags,
+  FaFilter,
+  FaDesktop,
+  FaFileAlt,
+  FaSearch,
+  FaDatabase,
+  FaRobot,
+  FaCode,
+  FaCloud,
+  FaLink,
+  FaAws,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -31,6 +41,7 @@ import {
   SiStripe,
   SiTailwindcss,
   SiRedux,
+  SiPython,
 } from "react-icons/si";
 
 // Placeholder project image URLs (replace with your actual images when deploying)
@@ -89,41 +100,49 @@ const Projects = () => {
       id: 2,
       title: "Style Scape",
       description:
-        "A modern e-commerce platform offering a seamless shopping experience with secure payments, user accounts, and an intuitive admin dashboard.",
+        "A modern e-commerce platform built with React JS, offering a clean UI and intuitive shopping experience.",
       image: "/ecommerce.png",
       github: "https://github.com/AnasBaqai/style-scape",
-      live: "https://style-scape.vercel.app",
+      live: "https://sunny-smakager-7e75c2.netlify.app/",
       technologies: [
-        { name: "Next.js", icon: <SiNextdotjs /> },
         { name: "React", icon: <SiReact /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-        { name: "Redux", icon: <SiRedux /> },
-        { name: "Stripe", icon: <SiStripe /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "CSS", icon: <SiCss3 /> },
+        { name: "Styled Components", icon: <SiCss3 /> },
       ],
       link: "/projects/2",
       icons: [
         <FaStore key="store" />,
         <FaShoppingCart key="cart" />,
         <FaShoppingBag key="bag" />,
-        <FaCreditCard key="payment" />,
         <FaTags key="products" />,
-        <FaUserCog key="admin" />,
+        <FaFilter key="filter" />,
+        <FaDesktop key="responsive" />,
       ],
     },
     {
       id: 3,
-      title: "Project Name",
-      description: "A short description of the project and its features.",
-      image: PROJECT_IMAGE,
-      github: "#",
-      live: "#",
+      title: "Intelligent Document RAG System",
+      description:
+        "A Retrieval-Augmented Generation (RAG) system that allows you to query PDF documents using natural language.",
+      image: "/rag_system.png",
+      github: "https://github.com/AnasBaqai/Intelligent_Document_RAG_System",
+      live: null,
       technologies: [
-        { name: "React", icon: <SiReact /> },
-        { name: "CSS", icon: <SiCss3 /> },
-        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "Python", icon: <SiPython /> },
+        { name: "LangChain", icon: <FaLink /> },
+        { name: "AWS Bedrock", icon: <FaAws /> },
+        { name: "ChromaDB", icon: <FaDatabase /> },
       ],
       link: "/projects/3",
+      icons: [
+        <FaFileAlt key="pdf" />,
+        <FaSearch key="search" />,
+        <FaDatabase key="vector" />,
+        <FaRobot key="ai" />,
+        <FaCode key="nlp" />,
+        <FaCloud key="cloud" />,
+      ],
     },
     {
       id: 4,
@@ -186,10 +205,9 @@ const Projects = () => {
 
                   <div className="project-tech">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">
-                        {tech.icon}{" "}
-                        <span className="tech-name">{tech.name}</span>
-                      </span>
+                      <div key={index} className="tech-icon" title={tech.name}>
+                        {tech.icon}
+                      </div>
                     ))}
                   </div>
 
@@ -203,15 +221,17 @@ const Projects = () => {
                     >
                       <FaGithub /> Code
                     </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <FaExternalLinkAlt /> Live
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FaExternalLinkAlt /> Live
+                      </a>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -325,24 +345,28 @@ const StyledProjects = styled.section`
   .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
   }
 
-  .tech-tag {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--light-text);
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 500;
+  .tech-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 5px;
-  }
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: var(--transition);
 
-  .tech-name {
-    margin-top: 2px;
+    &:hover {
+      transform: translateY(-3px);
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
   }
 
   .project-links {
