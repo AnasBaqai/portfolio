@@ -25,7 +25,8 @@ import {
   SiMongodb,
   SiNodedotjs,
   SiExpress,
-  SiMaterialui,
+  SiMui,
+  SiReact,
 } from "react-icons/si";
 
 const projects = [
@@ -43,12 +44,12 @@ const projects = [
     github: "https://github.com/AnasBaqai/car-parts-system",
     live: "https://car-parts-system-ars.vercel.app/login",
     technologies: [
-      { name: "React", icon: <FaReact /> },
+      { name: "React", icon: <SiReact /> },
       { name: "TypeScript", icon: <SiTypescript /> },
       { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "Express", icon: <SiExpress /> },
       { name: "MongoDB", icon: <SiMongodb /> },
-      { name: "Material-UI", icon: <SiMaterialui /> },
+      { name: "Material-UI", icon: <SiMui /> },
     ],
     features: [
       {
@@ -241,20 +242,24 @@ const ProjectDetails = () => {
 
 const StyledProjectDetails = styled.section`
   min-height: 100vh;
-  padding: 8rem 0;
+  padding: 10rem 0 5rem;
 
   .project-content {
     max-width: 900px;
     margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   }
 
   .project-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .title-with-icon {
@@ -280,8 +285,20 @@ const StyledProjectDetails = styled.section`
 
   h2 {
     font-size: 1.8rem;
-    margin: 2rem 0 1rem;
+    margin: 2.5rem 0 1.2rem;
     color: var(--primary);
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 60px;
+      background-color: var(--primary);
+    }
   }
 
   h3 {
@@ -294,6 +311,7 @@ const StyledProjectDetails = styled.section`
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    color: var(--light-text);
   }
 
   .project-image {
@@ -301,7 +319,7 @@ const StyledProjectDetails = styled.section`
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 
     img {
       width: 100%;
@@ -333,6 +351,7 @@ const StyledProjectDetails = styled.section`
 
     &:hover {
       background-color: #e0e0e0;
+      transform: translateY(-3px);
     }
   }
 
@@ -342,6 +361,7 @@ const StyledProjectDetails = styled.section`
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
     }
   }
 
@@ -353,49 +373,51 @@ const StyledProjectDetails = styled.section`
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
     }
   }
 
   .project-technologies {
-    margin: 2rem 0;
+    margin: 2.5rem 0;
   }
 
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   .tech-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
+    gap: 0.8rem;
+    padding: 1.2rem;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    min-width: 100px;
+    min-width: 110px;
     transition: var(--transition);
 
     &:hover {
       transform: translateY(-5px);
       background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
   }
 
   .tech-icon {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--primary);
   }
 
   .project-features,
   .project-architecture {
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 
     ul {
       margin-left: 0;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       list-style: none;
     }
   }
@@ -403,8 +425,8 @@ const StyledProjectDetails = styled.section`
   .features-list,
   .architecture-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.2rem;
   }
 
   .feature-item,
@@ -414,28 +436,33 @@ const StyledProjectDetails = styled.section`
     gap: 1rem;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1.2rem;
     transition: var(--transition);
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
       transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
   }
 
   .feature-icon,
   .architecture-icon {
     color: var(--primary);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     display: flex;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 50%;
   }
 
   .project-credentials {
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
+    padding: 1.8rem;
     border-radius: 8px;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
+    border-left: 3px solid var(--primary);
 
     h3 {
       margin-top: 0;
@@ -447,15 +474,29 @@ const StyledProjectDetails = styled.section`
   }
 
   .project-navigation {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
     display: flex;
     justify-content: center;
   }
 
   @media (max-width: 768px) {
+    padding: 8rem 0 3rem;
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
     .project-header {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
     }
 
     .tech-stack {
@@ -463,8 +504,8 @@ const StyledProjectDetails = styled.section`
     }
 
     .tech-item {
-      min-width: 80px;
-      padding: 0.75rem;
+      min-width: 90px;
+      padding: 1rem;
     }
 
     .features-list,

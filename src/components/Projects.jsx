@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion as Motion, useInView } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -12,13 +12,23 @@ import {
   FaBarcode,
   FaUserCog,
 } from "react-icons/fa";
+import {
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
+  SiMui,
+  SiTypescript,
+  SiJavascript,
+  SiCss3,
+  SiHtml5,
+} from "react-icons/si";
 
 // Placeholder project image URLs (replace with your actual images when deploying)
 const PROJECT_IMAGE = "https://via.placeholder.com/600x400";
 
 const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,12 +59,12 @@ const Projects = () => {
       github: "https://github.com/AnasBaqai/car-parts-system",
       live: "https://car-parts-system-ars.vercel.app/login",
       technologies: [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Express",
-        "Material-UI",
-        "TypeScript",
+        { name: "React", icon: <SiReact /> },
+        { name: "Node.js", icon: <SiNodedotjs /> },
+        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "Express", icon: <SiExpress /> },
+        { name: "Material-UI", icon: <SiMui /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
       ],
       link: "/projects/1",
       icons: [
@@ -73,7 +83,11 @@ const Projects = () => {
       image: PROJECT_IMAGE,
       github: "#",
       live: "#",
-      technologies: ["React", "CSS", "JavaScript"],
+      technologies: [
+        { name: "React", icon: <SiReact /> },
+        { name: "CSS", icon: <SiCss3 /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+      ],
       link: "/projects/2",
     },
     {
@@ -83,7 +97,11 @@ const Projects = () => {
       image: PROJECT_IMAGE,
       github: "#",
       live: "#",
-      technologies: ["React", "CSS", "JavaScript"],
+      technologies: [
+        { name: "React", icon: <SiReact /> },
+        { name: "CSS", icon: <SiCss3 /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+      ],
       link: "/projects/3",
     },
     {
@@ -93,7 +111,11 @@ const Projects = () => {
       image: PROJECT_IMAGE,
       github: "#",
       live: "#",
-      technologies: ["React", "CSS", "JavaScript"],
+      technologies: [
+        { name: "React", icon: <SiReact /> },
+        { name: "CSS", icon: <SiCss3 /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+      ],
       link: "/projects/4",
     },
   ];
@@ -104,7 +126,7 @@ const Projects = () => {
         <Motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           ref={ref}
         >
@@ -115,7 +137,7 @@ const Projects = () => {
           className="projects-grid"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate="visible"
         >
           {projectData.map((project) => (
             <Motion.div
@@ -144,7 +166,8 @@ const Projects = () => {
                   <div className="project-tech">
                     {project.technologies.map((tech, index) => (
                       <span key={index} className="tech-tag">
-                        {tech}
+                        {tech.icon}{" "}
+                        <span className="tech-name">{tech.name}</span>
                       </span>
                     ))}
                   </div>
@@ -180,12 +203,14 @@ const Projects = () => {
 };
 
 const StyledProjects = styled.section`
-  padding: 5rem 0;
+  padding: 8rem 0 5rem;
+  min-height: 100vh;
 
   .section-title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    color: var(--primary);
   }
 
   .projects-grid {
@@ -266,6 +291,7 @@ const StyledProjects = styled.section`
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.75rem;
+      color: var(--primary);
     }
 
     p {
@@ -289,6 +315,13 @@ const StyledProjects = styled.section`
     border-radius: 50px;
     font-size: 0.75rem;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .tech-name {
+    margin-top: 2px;
   }
 
   .project-links {
@@ -314,6 +347,8 @@ const StyledProjects = styled.section`
   }
 
   @media (max-width: 768px) {
+    padding-top: 6rem;
+
     .projects-grid {
       grid-template-columns: 1fr;
     }

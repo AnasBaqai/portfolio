@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,23 +30,28 @@ const Header = () => {
     >
       <div className="container">
         <div className="header-content">
-          <Link to="/" className="logo">
-            ANAS BAQAI
-          </Link>
+          <div className="logo-container">
+            <div className="avatar">
+              <img src="/avatar.png" alt="Anas Baqai" />
+            </div>
+            <Link to="/" className="logo">
+              ANAS BAQAI
+            </Link>
+          </div>
           <nav>
             <ul>
-              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              <Motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/about">About</Link>
-              </motion.li>
-              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              </Motion.li>
+              <Motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/projects">Projects</Link>
-              </motion.li>
-              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              </Motion.li>
+              <Motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/blog">Blog</Link>
-              </motion.li>
-              <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+              </Motion.li>
+              <Motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Link to="/contact">Contact</Link>
-              </motion.li>
+              </Motion.li>
             </ul>
           </nav>
         </div>
@@ -55,7 +60,7 @@ const Header = () => {
   );
 };
 
-const StyledHeader = styled(motion.header)`
+const StyledHeader = styled(Motion.header)`
   width: 100%;
   position: fixed;
   top: 0;
@@ -76,6 +81,26 @@ const StyledHeader = styled(motion.header)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--primary);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .logo {
