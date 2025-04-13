@@ -18,6 +18,15 @@ import {
   FaLock,
   FaDesktop,
   FaBox,
+  FaShoppingCart,
+  FaShoppingBag,
+  FaStore,
+  FaCreditCard,
+  FaTags,
+  FaUsers,
+  FaSearch,
+  FaFilter,
+  FaShippingFast,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -27,6 +36,11 @@ import {
   SiExpress,
   SiMui,
   SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiRedux,
+  SiStripe,
+  SiCss3,
 } from "react-icons/si";
 
 const projects = [
@@ -108,6 +122,67 @@ const projects = [
       password: "demo123",
     },
     systemIcon: <FaCar style={{ fontSize: "38px" }} />,
+  },
+  {
+    id: "2",
+    title: "Style Scape",
+    description:
+      "A modern e-commerce platform built with React JS, offering a clean UI and intuitive shopping experience.",
+    fullDescription: `
+      Style Scape is a responsive e-commerce platform designed to showcase products with a clean, modern interface. Built with React JS and styled-components, it features a user-friendly browsing experience with product categories, detailed product views, and a shopping cart system.
+      
+      The platform includes product browsing, category filtering, and a shopping cart implementation. The UI is designed to be responsive across all device sizes, providing an optimal shopping experience on both desktop and mobile devices.
+    `,
+    image: "/ecommerce.png",
+    github: "https://github.com/AnasBaqai/style-scape",
+    live: "https://sunny-smakager-7e75c2.netlify.app/",
+    technologies: [
+      { name: "React", icon: <SiReact /> },
+      { name: "JavaScript", icon: <SiJavascript /> },
+      { name: "CSS", icon: <SiCss3 /> },
+      { name: "Styled Components", icon: <SiCss3 /> },
+    ],
+    features: [
+      {
+        text: "Product Catalog: Browse products with detailed information",
+        icon: <FaSearch />,
+      },
+      {
+        text: "Shopping Cart: Add, update, and remove items from cart",
+        icon: <FaShoppingCart />,
+      },
+      {
+        text: "Category Filtering: Browse products by category",
+        icon: <FaFilter />,
+      },
+      {
+        text: "Responsive Design: Optimized for all device sizes",
+        icon: <FaDesktop />,
+      },
+      {
+        text: "Product Details: View detailed product information",
+        icon: <FaTags />,
+      },
+      {
+        text: "Clean UI: Modern and intuitive user interface",
+        icon: <FaStore />,
+      },
+    ],
+    architecture: [
+      {
+        text: "Frontend: React JS with styled-components for a clean, responsive UI",
+        icon: <FaReact />,
+      },
+      {
+        text: "State Management: React Context API for cart and product state",
+        icon: <FaCogs />,
+      },
+      {
+        text: "Routing: React Router for seamless navigation",
+        icon: <FaServer />,
+      },
+    ],
+    systemIcon: <FaStore style={{ fontSize: "38px" }} />,
   },
   // Other projects can be added here with similar structure
 ];

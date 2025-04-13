@@ -11,6 +11,11 @@ import {
   FaChartLine,
   FaBarcode,
   FaUserCog,
+  FaShoppingCart,
+  FaShoppingBag,
+  FaStore,
+  FaCreditCard,
+  FaTags,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -22,6 +27,10 @@ import {
   SiJavascript,
   SiCss3,
   SiHtml5,
+  SiNextdotjs,
+  SiStripe,
+  SiTailwindcss,
+  SiRedux,
 } from "react-icons/si";
 
 // Placeholder project image URLs (replace with your actual images when deploying)
@@ -78,17 +87,29 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Project Name",
-      description: "A short description of the project and its features.",
-      image: PROJECT_IMAGE,
-      github: "#",
-      live: "#",
+      title: "Style Scape",
+      description:
+        "A modern e-commerce platform offering a seamless shopping experience with secure payments, user accounts, and an intuitive admin dashboard.",
+      image: "/ecommerce.png",
+      github: "https://github.com/AnasBaqai/style-scape",
+      live: "https://style-scape.vercel.app",
       technologies: [
+        { name: "Next.js", icon: <SiNextdotjs /> },
         { name: "React", icon: <SiReact /> },
-        { name: "CSS", icon: <SiCss3 /> },
-        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+        { name: "Redux", icon: <SiRedux /> },
+        { name: "Stripe", icon: <SiStripe /> },
       ],
       link: "/projects/2",
+      icons: [
+        <FaStore key="store" />,
+        <FaShoppingCart key="cart" />,
+        <FaShoppingBag key="bag" />,
+        <FaCreditCard key="payment" />,
+        <FaTags key="products" />,
+        <FaUserCog key="admin" />,
+      ],
     },
     {
       id: 3,
